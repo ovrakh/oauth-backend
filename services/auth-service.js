@@ -38,10 +38,10 @@ class AuthService extends BaseController {
             throw { code : 401, message : 'Session not found' };
         }
 
-        if (session.expiresAt < Date.now()) {
+/*        if (session.expiresAt < Date.now()) {
             session.remove();
             throw { code : 401, message : 'Session invalid' };
-        }
+        }*/
         return session;
     }
 
