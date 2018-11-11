@@ -20,6 +20,8 @@ class AuthService extends BaseController {
 
             let user =  await User.findById(session);
 
+            console.log('user', user);
+
             if (!user) {
                 throw { code : 404, message : 'User not found' };
             }
