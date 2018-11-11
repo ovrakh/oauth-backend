@@ -14,13 +14,9 @@ class AuthService extends BaseController {
 
             await this.getValidationResult(req);
 
-            console.log('auth', req.headers.authorization);
-
             let session = await this._getSessionByToken(req.headers.authorization);
 
             let user =  await User.findById(session);
-
-            console.log('user', user);
 
             if (!user) {
                 throw { code : 404, message : 'User not found' };
@@ -42,10 +38,10 @@ class AuthService extends BaseController {
             throw { code : 401, message : 'Session not found' };
         }
 
-/*        if (session.expiresAt < Date.now()) {
+        if (session.expiresAt < Date.now()) {
             session.remove();
             throw { code : 401, message : 'Session invalid' };
-        }*/
+        }
         return session;
     }
 

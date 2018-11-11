@@ -9,7 +9,6 @@ class FriendController extends BaseController {
 
     async getAll(req, res, next) {
         try {
-            console.log('req', req.query.access_token)
             vk.setToken(req.query.access_token);
 
             let friends = await vk.callMethod('friends.get', {
@@ -18,6 +17,9 @@ class FriendController extends BaseController {
                 fields: 'online,photo_100',
                 count: 5
             });
+
+            console.log('fri', friends);
+
 
             let me = await vk.callMethod('users.get', {
                 version: 5.52,
