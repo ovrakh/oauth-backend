@@ -18,7 +18,7 @@ class FriendController extends BaseController {
                 count: 5
             });
 
-            console.log('fri', friends);
+/*            console.log('fri', friends);
 
 
             let me = await vk.callMethod('users.get', {
@@ -26,7 +26,7 @@ class FriendController extends BaseController {
                 uids: req.query.user_id
             });
 
-            friends.push(me[0]);
+            friends.push(me[0]);*/
 
             console.log('fri', friends);
 
