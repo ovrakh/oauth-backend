@@ -32,7 +32,7 @@ class FriendController extends BaseController {
 
             next();
         } catch (error) {
-            next(error)
+            next({ code: 111, message: 'xz'})
         }
     }
 }
