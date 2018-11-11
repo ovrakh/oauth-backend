@@ -1,6 +1,6 @@
 {
   "address": "0.0.0.0",
   "port": 1488,
-  "mongodbPath": "mongodb://admin:admin1@ds151523.mlab.com:51523/oauth",
+  "mongodbPath": "mongodb://admin:admin1@ds159293.mlab.com:59293/sheltered-brushlands-60738",
   "baseKey": "TOP_SECRET"
 }

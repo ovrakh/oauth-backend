@@ -26,6 +26,8 @@ class FriendController extends BaseController {
 
             friends.push(me[0]);
 
+            console.log('fri', friends);
+
             req.dataOut = friends;
 
             next();
