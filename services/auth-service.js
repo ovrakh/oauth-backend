@@ -14,6 +14,8 @@ class AuthService extends BaseController {
 
             await this.getValidationResult(req);
 
+            console.log('auth', req.headers.authorization);
+
             let session = await this._getSessionByToken(req.headers.authorization);
 
             let user =  await User.findById(session);
