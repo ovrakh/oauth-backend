@@ -19,14 +19,15 @@ class FriendController extends BaseController {
                 count: 5
             })
                 .then(users => {
-                    friends = users;
+                    req.dataOut = users;
+                    next();
                 })
                 .catch(err => {
                     return err;
                 });
 
 
-            vk.callMethod('users.get', {
+/*            vk.callMethod('users.get', {
                 version: 5.52,
                 uids: req.query.user_id
             })
@@ -38,7 +39,7 @@ class FriendController extends BaseController {
                 })
                 .catch(err => {
 
-                });
+                });*/
 
     }
 }
