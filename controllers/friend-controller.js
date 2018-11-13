@@ -1,41 +1,45 @@
 const BaseController = require('./base-controller');
 
 var vk = require('vk-sdk');
+let friends = [];
 
 class FriendController extends BaseController {
     constructor() {
         super();
     }
 
-    async getAll(req, res, next) {
-        try {
+    getAll(req, res, next) {
+
             vk.setToken(req.query.access_token);
 
-            let friends = await vk.callMethod('friends.get', {
+            vk.callMethod('friends.get', {
                 version: 5.87,
                 uids: req.query.user_id,
                 fields: 'online,photo_100',
                 count: 5
-            });
+            })
+                .then(users => {
+                    friends = users;
+                })
+                .catch(err => {
+                    return err;
+                });
 
-/*            console.log('fri', friends);
 
-
-            let me = await vk.callMethod('users.get', {
+            vk.callMethod('users.get', {
                 version: 5.52,
                 uids: req.query.user_id
-            });
+            })
+                .then(user => {
+                    friends.push(user[0]);
+                    console.log('fri', friends);
+                    req.dataOut =  friends;
+                    next();
+                })
+                .catch(err => {
 
-            friends.push(me[0]);*/
+                });
 
-            console.log('fri', friends);
-
-            req.dataOut = friends;
-
-            next();
-        } catch (error) {
-            next({ code: 111, message: 'xz'})
-        }
     }
 }
 
